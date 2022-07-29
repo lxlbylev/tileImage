@@ -1,45 +1,34 @@
-# tilebg.lua v1.1
-For Corona SDK
-***
-This creates a function tileBG() which will tile an image on the background of the display. It detects your display content height and attempts to calculate the minimum number of tiles needed (based on the size of the provided background tile.)
+# TileImage v1.0
+For Solar2D<br>
+<br>
+This create a tiled image on the top-left point. It calculate the minimum number of tiles needed (based on the size of the provided tile)
 
 # USAGE
 
-1) Include the function in your code (probably main.lua)
+Include the function in your code
 
-	require( "tilebg" )
+	local tileimage = require( "tileimage" )
 
 
-2) Now you can begin to use the function in your code. 
+Now you can begin to use the function in your code. 
 
-	local bg = tileBG() add a new background, use the default settings
+	local bg = tileimage("tile.png", 100, 100, 10) --create 100 images tile.png
+	bg.x = 123
+	bg.y = 123
 	
-The function takes 3 optional arguments:
+The function takes 4 required arguments:
 
-	bgImageFile - the filename of the background image to tile
-	bgWidth - the width of the bgImagefile
-	bgHeight - the height of the bgImagefile
+	ImagePath - the filename of the image to tile
+	width - the width of all tiles
+	height - the height of all tiles
+	tileSize - size of one tile
 
-Default values
-If the function is run without any arguments then it will use these values:
+The function takes 2 optional arguments:
 
-	bgImageFile = tileBG.jpg
-	bgWidth = 100
-	bgHeight = 100
+	offSetX - how much to shift all tiles on the x axis
+	offSetY - how much to shift all tiles on the y axis
 
-In other words, you can quickly use this code if you have an image file called tileBG.jpg in your project folder, which is 100x100 pixels in size.
-
-Its best to store the background in a local object, as demoed above:
-
-	local bg = tileBG()
 
 Doing this, you can then use an build in method to self-destruct the tiles:
 
-	bg.removeBG()
-
-Thats all there is to it. There is a full demo on the github repo. To make things easier, the function logs everything it does to the console...
-
-# CHANGELOG
-1.1 - Updated graphics code from onesvat
-1.0 - First release
-
+	bg.remove()
